@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Menu Seduhan & Kudapan | Titik Temu Coffeehouse</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Dynamic Navbar -->
+  <nav id="main-nav"></nav>
+
+  <main class="container" style="padding-top: 30px; padding-bottom: 60px;">
+    <!-- HEADER -->
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <span class="section-tag">Daftar Menu Otentik</span>
+        <h1 class="section-title" style="margin-bottom: 4px;">Seduhan Kopi Nusantara & Artisan Pastry</h1>
+        <p class="section-subtitle">Pilih seduhan favorit Anda, atur preferensi rasa, dan pesan langsung dari meja kafe.</p>
+      </div>
+      <span id="menu-count-badge" class="user-badge" style="background-color: var(--coffee-amber-light); color: var(--coffee-amber-hover); font-weight: 800;">
+        10 Menu Tersedia
+      </span>
+    </div>
+
+    <!-- CONTROLS & FILTER BAR -->
+    <div class="menu-controls">
+      <div class="search-bar">
+        <span style="font-size: 16px; color: var(--text-muted);">🔍</span>
+        <input type="text" id="search-input" class="search-input" placeholder="Cari nama kopi, daerah asal (Gayo, Toraja, Bajawa), atau rasa (Blueberry, Chocolate, Honey)...">
+      </div>
+
+      <div class="category-pills">
+        <button type="button" class="cat-btn active" data-category="Semua">Semua Menu</button>
+        <button type="button" class="cat-btn" data-category="Manual Brew">☕ Manual Brew (V60/Drip)</button>
+        <button type="button" class="cat-btn" data-category="Milk Based">🥛 Milk Based</button>
+        <button type="button" class="cat-btn" data-category="Espresso & Black">⚡ Espresso & Black</button>
+        <button type="button" class="cat-btn" data-category="Non-Coffee">🍵 Non-Coffee</button>
+        <button type="button" class="cat-btn" data-category="Pastry">🥐 Artisan Pastry</button>
+      </div>
+    </div>
+
+    <!-- MENU GRID -->
+    <div id="menu-catalog-grid" class="menu-grid">
+      <!-- Rendered dynamically by js/menu.js -->
+    </div>
+  </main>
+
+  <!-- MODAL 1: KUSTOMISASI KOPI -->
+  <div id="customization-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Kustomisasi Seduhan Kopi</h3>
+        <button onclick="closeModal('customization-modal')" class="modal-close-btn">&times;</button>
+      </div>
+      <div id="customization-modal-content" class="modal-body">
+        <!-- Injected via js/menu.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: CHECKOUT QRIS & PILIH MEJA -->
+  <div id="checkout-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Pemesanan Meja & QRIS Kafe</h3>
+        <button onclick="closeModal('checkout-modal')" class="modal-close-btn">&times;</button>
+      </div>
+      <div id="checkout-modal-content" class="modal-body">
+        <!-- Injected via js/menu.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: STRUK KASIR & KONFIRMASI -->
+  <div id="receipt-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Struk Transaksi Meja Kafe</h3>
+        <button onclick="closeModal('receipt-modal')" class="modal-close-btn">&times;</button>
+      </div>
+      <div id="receipt-modal-content" class="modal-body">
+        <!-- Injected via js/menu.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Standard Footer -->
+  <footer id="main-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>

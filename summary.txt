@@ -1,0 +1,121 @@
+================================================================================
+                    TITIK TEMU COFFEEHOUSE - PROJECT SUMMARY
+================================================================================
+
+Nama Proyek   : Titik Temu Coffeehouse (Artisan Coffee & Roastery)
+Tipe Aplikasi : Standalone Client-Side Web Application (Tanpa Backend)
+Lokasi Folder : C:\Users\VICTUS\.gemini\antigravity\scratch\cafe-html
+Status Git    : Tidak terhubung ke Git / Tidak di-push ke GitHub (100% Terpisah)
+Alamat Server : http://localhost:8080 (via Python Live Server)
+
+--------------------------------------------------------------------------------
+1. TECH STACK & ARSITEKTUR
+--------------------------------------------------------------------------------
+- Basic HTML (HTML5 Semantik):
+  Menggunakan struktur markup standar tanpa framework template:
+  * index.html   : Beranda utama kafe, hero banner, filosofi, & kopi unggulan.
+  * menu.html    : Katalog 10 menu kopi nusantara, filter kategori, kustomisasi, & QRIS.
+  * profile.html : Profil member, lama akun bergabung, pelacak meja, & struk thermal.
+  * admin.html   : Barista/Kasir command center, antrean seduh, & CRUD inventaris menu.
+  * login.html   : Autentikasi dengan tombol 1-klik demo dan pendaftaran member baru.
+
+- Basic CSS (Pure CSS):
+  * Lokasi: css/style.css
+  * Tidak menggunakan framework utility eksternal (bebas dari Tailwind/Bootstrap).
+  * Menggunakan CSS Custom Properties (Variables):
+    - --coffee-dark   : #1c130d (Espresso pekat)
+    - --coffee-amber  : #b87431 (Crema keemasan & karamel)
+    - --coffee-cream  : #fffdf9 (Foam susu lembut)
+    - --coffee-foam   : #f6efe6 (Background kartu hangat)
+  * Desain responsif (Flexbox & CSS Grid) untuk tampilan desktop dan ponsel.
+  * Efek visual kertas struk belanja kasir thermal berpori otentik.
+
+- Vanilla JavaScript (ES6+):
+  * store.js   : Cache Engine berbasis localStorage (menu, user, pesanan, sesi).
+  * app.js     : Navigasi dinamis, render footer bersama, format mata uang Rupiah.
+  * menu.js    : Filter kategori realtime, pencarian instan, modal checkout QRIS.
+  * profile.js : Algoritma perhitungan lama keanggotaan akun & status stepper antrean.
+  * admin.js   : Barista queue updater, metrik pendapatan, dan form modal CRUD menu.
+
+- Python sebagai Live Server:
+  * Menggunakan modul server bawaan Python: `python -m http.server 8080`.
+  * Berfungsi sebagai HTTP live server lokal yang sangat ringan, tanpa konfigurasi,
+    dan tidak memerlukan instalasi Node.js atau server web Apache/NGINX.
+
+--------------------------------------------------------------------------------
+2. PENYIMPANAN DATA (CACHE PERSISTENT STORE)
+--------------------------------------------------------------------------------
+Aplikasi menggunakan Web Storage API (localStorage) sebagai media penyimpanan
+berbentuk cache lokal:
+- `cafe_menu_cache`     : Menyimpan 10 item menu kopi artisan dan pastry.
+- `cafe_users_cache`    : Menyimpan data akun pengguna (barista dan pelanggan).
+- `cafe_orders_cache`   : Menyimpan riwayat transaksi dan antrean pesanan meja.
+- `cafe_active_session` : Menyimpan sesi login aktif (dibersihkan total saat logout).
+
+Data otomatis dipulihkan setiap kali browser dibuka kembali dan bekerja penuh
+secara offline tanpa memerlukan koneksi database internet.
+
+--------------------------------------------------------------------------------
+3. ALUR & FITUR UTAMA SISTEM
+--------------------------------------------------------------------------------
+A. Beranda Kafe (index.html):
+   - Hero banner: "Seduhan Presisi, Cita Rasa Nusantara".
+   - 3 Filosofi Roastery: Biji Kopi 100% Nusantara, Sangrai Mingguan, Presisi Barista.
+   - 4 Rekomendasi Barista terpopuler dimuat langsung dari cache.
+
+B. Katalog Menu & Checkout QRIS Meja (menu.html):
+   - 10 Menu Kopi & Kudapan: Aceh Gayo V60, Toraja Sapan Japanese Drip, Kopi Susu Aren,
+     Flores Bajawa Cold Brew, Caramel Macchiato, Espresso Doppio, Matcha Oat, dll.
+   - Filter Kategori: Manual Brew, Milk Based, Espresso, Non-Coffee, Artisan Pastry.
+   - Kustomisasi Rasa: Suhu (Hot/Iced), Tingkat Gula Aren (100%/50%/0%), & Catatan Barista.
+   - Pemesanan Meja: Dine-in (Pilih Meja 01 s/d 06, Bar Counter) atau Bawa Pulang (Takeaway).
+   - QRIS Dinamis: Kode QR simulasi kafe dengan hitung mundur (countdown) 5 menit.
+   - Pembayaran Simultan: Tombol konfirmasi bayar langsung mencetak struk transaksi.
+
+C. Profil Pelanggan & Pelacak Meja (profile.html):
+   - Menghitung durasi keanggotaan akun secara dinamis (contoh: "35 hari yang lalu").
+   - Statistik cangkir kopi yang telah dinikmati dan poin loyalitas member.
+   - Pelacak status meja 4 langkah berurutan:
+     1. PAID (Lunas) -> 2. BREWING (Diseduh) -> 3. READY (Siap Meja) -> 4. COMPLETED (Selesai).
+   - Pop-up struk thermal kasir dengan tombol cetak fisik browser (window.print).
+
+D. Barista & Kasir Command Center (admin.html):
+   - Navigasi Gabungan: Panel kontrol barista + tombol navigasi cepat ke katalog & beranda.
+   - 4 Metrik Kafe: Total Omzet Kasir, Cangkir Terjual, Antrean Aktif, Menu Terlaris.
+   - Pengubah Status Antrean: Barista dapat mengubah status pesanan dengan sekali klik.
+   - CRUD Menu Kopi: Tambah menu baru, edit rincian rasa/harga, saklar stok habis, hapus.
+
+E. Autentikasi & Tombol Demo (login.html):
+   - Tombol 1-klik masuk demo Barista / Kasir.
+   - Tombol 1-klik masuk demo Pelanggan Setia.
+   - Form pendaftaran akun member baru.
+   - Logout instan: Menghapus cache sesi seketika tanpa sisa cookie/cache tersangkut.
+
+--------------------------------------------------------------------------------
+4. AKUN DEMO UNTUK PENGUJIAN
+--------------------------------------------------------------------------------
+1. Akun Barista / Kasir (Role: ADMIN)
+   - Username : admin
+   - Password : kopiadmin
+   - Akses    : Dashboard admin.html, update status antrean seduh, kelola menu.
+
+2. Akun Pelanggan Setia (Role: USER)
+   - Username : pelanggan
+   - Password : kopienak
+   - Akses    : Halaman profile.html, riwayat cangkir, durasi akun, cetak struk.
+
+--------------------------------------------------------------------------------
+5. CARA MENJALANKAN
+--------------------------------------------------------------------------------
+Metode 1 (Menggunakan Python Live Server):
+  1. Buka terminal:
+     cd C:\Users\VICTUS\.gemini\antigravity\scratch\cafe-html
+  2. Jalankan perintah:
+     python -m http.server 8080
+  3. Buka browser:
+     http://localhost:8080
+
+Metode 2 (Dobel-Klik Langsung):
+  Buka folder C:\Users\VICTUS\.gemini\antigravity\scratch\cafe-html di File Explorer,
+  lalu klik ganda file "index.html". Aplikasi langsung berjalan di browser.
+================================================================================

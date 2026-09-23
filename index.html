@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titik Temu Coffeehouse | Artisan Coffee & Roastery</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Dynamic Navbar -->
+  <nav id="main-nav"></nav>
+
+  <main class="container">
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-tag">
+            <span>✨</span> Artisan Coffeehouse & Micro-Roastery
+          </div>
+          <h1 class="hero-title">
+            Seduhan Presisi,<br>Cita Rasa Nusantara.
+          </h1>
+          <p class="hero-desc">
+            Nikmati aroma kopi single origin pilihan dari dataran tinggi Takengon hingga pegunungan Toraja. 
+            Disangrai segar mingguan dan disajikan oleh barista berdedikasi tinggi dengan rasio ekstraksi sempurna.
+          </p>
+          <div class="hero-actions">
+            <a href="menu.html" class="btn btn-primary">
+              Lihat Menu Kopi Lengkap &rarr;
+            </a>
+            <a href="menu.html" class="btn btn-outline" style="color: #ffffff; border-color: rgba(255,255,255,0.3);">
+              Pesan Meja via QRIS
+            </a>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" alt="Suasana Barista Titik Temu Coffeehouse">
+        </div>
+      </div>
+    </section>
+
+    <!-- ROASTERY VALUES -->
+    <section style="margin-bottom: 50px;">
+      <div class="section-header">
+        <span class="section-tag">Filosofi Titik Temu</span>
+        <h2 class="section-title">Kenapa Menyeduh Bersama Kami?</h2>
+        <p class="section-subtitle">Tiga pilar utama dalam menghadirkan pengalaman kopi artisan yang tak terlupakan di setiap cangkir Anda.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🏔️</div>
+          <h3 class="feature-title">Biji Kopi Nusantara 100%</h3>
+          <p class="feature-desc">
+            Bekerja sama langsung dengan petani lokal dari dataran tinggi Aceh Gayo, Toraja Sapan, hingga Flores Bajawa pada ketinggian 1.400 - 1.700 mdpl.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔥</div>
+          <h3 class="feature-title">Sangrai Mikro Mingguan</h3>
+          <p class="feature-desc">
+            Disangrai dalam jumlah kecil (micro-batch) setiap minggu untuk memastikan profil rasa alami buah, bunga, dan cokelat tetap hidup di lidah Anda.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚖️</div>
+          <h3 class="feature-title">Presisi Barista & QRIS Cepat</h3>
+          <p class="feature-desc">
+            Suhu air, rasio gilingan, dan waktu ekstraksi terukur rapi. Pesan langsung dari meja Anda dengan pemindaian QRIS kilat tanpa perlu antre di kasir.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED BREWS -->
+    <section style="margin-bottom: 60px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <span class="section-tag">Rekomendasi Barista</span>
+          <h2 class="section-title" style="margin-bottom: 0;">Seduhan Paling Diminati Hari Ini</h2>
+        </div>
+        <a href="menu.html" class="btn btn-outline btn-sm">
+          Lihat Semua 10 Menu &rarr;
+        </a>
+      </div>
+
+      <div id="featured-menu-grid" class="menu-grid">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- MEMBER BANNER -->
+    <section style="background: linear-gradient(135deg, #f6efe6 0%, #ecdcc9 100%); border: 1px solid var(--coffee-border); border-radius: var(--radius-xl); padding: 36px 30px; margin-bottom: 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+      <div>
+        <span style="font-size: 11px; font-weight: 800; color: var(--coffee-amber); text-transform: uppercase; letter-spacing: 1px;">Privilese Member Kafe</span>
+        <h3 style="font-size: 22px; font-weight: 900; color: var(--coffee-dark); margin: 6px 0 8px;">Pantau Cangkir Kopi & Riwayat Pesanan Meja Anda</h3>
+        <p style="font-size: 14px; color: var(--text-muted); max-width: 550px;">
+          Setiap cangkir yang Anda nikmati otomatis tercatat. Masuk akun untuk melihat pelacak status antrean seduhan meja secara realtime serta cetak struk kasir thermal kapan saja.
+        </p>
+      </div>
+      <div style="display: flex; gap: 12px;">
+        <a href="profile.html" class="btn btn-dark">
+          Buka Profil & Pesanan
+        </a>
+        <a href="login.html" class="btn btn-primary">
+          Masuk / Daftar Akun
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Standard Footer -->
+  <footer id="main-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const featuredContainer = document.getElementById("featured-menu-grid");
+      if (!featuredContainer) return;
+
+      const menu = Store.getMenu();
+      const populars = menu.filter((m) => m.popular).slice(0, 4);
+
+      featuredContainer.innerHTML = populars.map((item) => `
+        <div class="menu-card">
+          <div class="card-img-wrap">
+            <img src="${escapeHtml(item.imageUrl)}" alt="${escapeHtml(item.name)}" loading="lazy">
+            <span class="card-badge-popular">★ Favorit</span>
+            <span class="card-badge-roast">${escapeHtml(item.roastLevel)}</span>
+          </div>
+          <div class="card-body">
+            <div class="card-category">${escapeHtml(item.category)}</div>
+            <h4 class="card-title">${escapeHtml(item.name)}</h4>
+            <div class="card-origin">📍 ${escapeHtml(item.origin)}</div>
+            <div class="card-notes">
+              ${(item.tastingNotes || []).map((note) => `<span class="note-tag">${escapeHtml(note)}</span>`).join("")}
+            </div>
+            <div class="card-footer">
+              <span class="card-price">${Store.formatRupiah(item.price)}</span>
+              <a href="menu.html?item=${item.slug}" class="btn btn-primary btn-sm">
+                Pesan & Kustomisasi
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    });
+  </script>
+</body>
+</html>
