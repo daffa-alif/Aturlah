@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Kelola Master Event & Silabus - EventCraft</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-container">
+  <!-- ========================================================================
+       1. SIDEBAR NAVIGASI
+       ======================================================================== -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">E</div>
+      <div class="brand-text">
+        <h2>EventCraft</h2>
+        <span>Sistem Event & Workshop</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">Modul Utama Kelompok</div>
+      
+      <!-- Modul Master Event (Individu A - AKTIF) -->
+      <a href="index.html" class="nav-item active">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>Master Event & Silabus</span>
+      </a>
+
+      <!-- Modul Anggota Lainnya (Konteks Domain dengan Modal Arsitektur) -->
+      <a href="javascript:void(0)" onclick="openModuleInfoModal('B')" class="nav-item inactive-badge" title="Klik untuk melihat spesifikasi arsitektur & relasi Modul B">
+        <span style="display:flex; align-items:center; gap:12px;">
+          <svg viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span style="display: flex; flex-direction: column;">
+            <strong style="font-size: 0.85rem; color: var(--slate-700);">Pendaftaran Speaker</strong>
+            <small style="font-size: 0.7rem; color: var(--slate-400);">Individu B • Narasumber</small>
+          </span>
+        </span>
+        <span class="tag-module">Modul B</span>
+      </a>
+
+      <a href="javascript:void(0)" onclick="openModuleInfoModal('C')" class="nav-item inactive-badge" title="Klik untuk melihat spesifikasi arsitektur & relasi Modul C">
+        <span style="display:flex; align-items:center; gap:12px;">
+          <svg viewBox="0 0 24 24">
+            <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path>
+            <path d="M13 5v2"></path>
+            <path d="M13 17v2"></path>
+            <path d="M13 11v2"></path>
+          </svg>
+          <span style="display: flex; flex-direction: column;">
+            <strong style="font-size: 0.85rem; color: var(--slate-700);">Kategori Tiket & Benefit</strong>
+            <small style="font-size: 0.7rem; color: var(--slate-400);">Individu C • Pricing Tier</small>
+          </span>
+        </span>
+        <span class="tag-module">Modul C</span>
+      </a>
+
+      <a href="javascript:void(0)" onclick="openModuleInfoModal('D')" class="nav-item inactive-badge" title="Klik untuk melihat spesifikasi arsitektur & relasi Modul D">
+        <span style="display:flex; align-items:center; gap:12px;">
+          <svg viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span style="display: flex; flex-direction: column;">
+            <strong style="font-size: 0.85rem; color: var(--slate-700);">Direktori Peserta</strong>
+            <small style="font-size: 0.7rem; color: var(--slate-400);">Individu D • Registrasi & QR</small>
+          </span>
+        </span>
+        <span class="tag-module">Modul D</span>
+      </a>
+
+      <div class="nav-section-title">Dokumentasi & API</div>
+      <a href="README.md" target="_blank" class="nav-item">
+        <svg viewBox="0 0 24 24">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        <span>Laravel MVC & API Docs</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-snippet">
+        <div class="user-avatar">IA</div>
+        <div class="user-info">
+          <div class="user-name">Individu A</div>
+          <div class="user-role">Modul Master Event</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       2. MAIN CONTENT WRAPPER
+       ======================================================================== -->
+  <main class="main-wrapper">
+    <!-- Top Header -->
+    <header class="top-header">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+          ☰
+        </button>
+        <div style="font-size: 0.85rem; color: var(--slate-500); display: flex; align-items: center; gap: 6px;">
+          <a href="index.html" style="color: var(--slate-600); text-decoration: none; font-weight: 500;">Master Event</a>
+          <span>/</span>
+          <span style="color: var(--primary); font-weight: 600;">Form Pengelolaan</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <a href="index.html" class="btn btn-secondary btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Kembali ke Daftar</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Content Body -->
+    <div class="content-body">
+      <!-- Page Header -->
+      <div class="page-header">
+        <div>
+          <h1 class="page-title" id="formPageTitle">Tambah Master Event Baru</h1>
+          <p class="page-subtitle" id="formPageSubtitle">Isi informasi judul event, klasifikasi kategori, estimasi durasi, dan susun silabus kurikulum materi.</p>
+        </div>
+      </div>
+
+      <!-- Form Container Layout (2 Kolom: Form Utama + Panel Ringkasan) -->
+      <form id="eventForm">
+        <input type="hidden" id="eventId" value="">
+        <input type="hidden" id="totalSessions" value="0">
+
+        <div class="form-layout">
+          <!-- Kolom Kiri: Form Utama -->
+          <div class="form-main-col">
+            
+            <!-- 1. Card Informasi Utama Event -->
+            <div class="form-card">
+              <h3 class="form-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                1. Informasi Dasar Event
+              </h3>
+              <p class="form-card-subtitle">Pengaturan identitas kegiatan, judul resmi, dan klasifikasi bidang studi kasus.</p>
+
+              <!-- Judul Event -->
+              <div class="form-group">
+                <label for="eventTitle" class="form-label">
+                  Judul Event / Workshop <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="eventTitle" 
+                  class="form-control" 
+                  placeholder="Contoh: Pelatihan RESTful API Laravel & Microservices Architecture" 
+                  required
+                  oninput="updateTotalSummary()"
+                >
+                <div class="form-help">Gunakan judul yang jelas, menarik, dan mencerminkan esensi materi kegiatan.</div>
+              </div>
+
+              <!-- Kategori Event (Teknologi vs Bisnis) -->
+              <div class="form-group">
+                <label class="form-label">
+                  Kategori Bidang Event <span class="required">*</span>
+                </label>
+                <div class="category-radio-group">
+                  <label class="category-radio-card active-tech" id="cardCategoryTech">
+                    <input 
+                      type="radio" 
+                      name="category" 
+                      value="Teknologi" 
+                      checked 
+                      onchange="updateTotalSummary()"
+                    >
+                    <div>
+                      <strong style="color: var(--tech); display: block; font-size: 0.9rem;">Teknologi</strong>
+                      <span style="font-size: 0.775rem; color: var(--slate-500);">Software, Cloud, Database, AI, & Coding</span>
+                    </div>
+                  </label>
+
+                  <label class="category-radio-card" id="cardCategoryBiz">
+                    <input 
+                      type="radio" 
+                      name="category" 
+                      value="Bisnis" 
+                      onchange="updateTotalSummary()"
+                    >
+                    <div>
+                      <strong style="color: var(--business); display: block; font-size: 0.9rem;">Bisnis</strong>
+                      <span style="font-size: 0.775rem; color: var(--slate-500);">Startup, Valuasi, B2B Sales, & Finansial</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Durasi Sesi & Status -->
+              <div class="duration-grid">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="sessionDuration" class="form-label">
+                    Standar Durasi per Sesi <span class="required">*</span>
+                  </label>
+                  <div class="input-with-unit">
+                    <input 
+                      type="number" 
+                      id="sessionDuration" 
+                      class="form-control" 
+                      min="30" 
+                      max="300" 
+                      step="15" 
+                      value="90" 
+                      required
+                    >
+                    <span class="unit-label">Menit</span>
+                  </div>
+                  <div class="form-help">Durasi rata-rata pelaksanaan tiap modul sesi kegiatan.</div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="eventStatus" class="form-label">Status Publikasi</label>
+                  <select id="eventStatus" class="form-control">
+                    <option value="Published">Published (Publikasikan Langsung)</option>
+                    <option value="Draft">Draft (Simpan Sementara)</option>
+                  </select>
+                  <div class="form-help">Status menentukan apakah event siap dibuka untuk registrasi.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Card Deskripsi Event -->
+            <div class="form-card">
+              <h3 class="form-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);">
+                  <line x1="21" y1="10" x2="3" y2="10"></line>
+                  <line x1="21" y1="6" x2="3" y2="6"></line>
+                  <line x1="21" y1="14" x2="3" y2="14"></line>
+                  <line x1="21" y1="18" x2="3" y2="18"></line>
+                </svg>
+                2. Deskripsi & Latar Belakang Event
+              </h3>
+              <p class="form-card-subtitle">Uraian mengenai tujuan pembelajaran, target peserta, dan kompetensi yang akan dicapai.</p>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="eventDescription" class="form-label">
+                  Deskripsi Lengkap <span class="required">*</span>
+                </label>
+                <textarea 
+                  id="eventDescription" 
+                  class="form-control" 
+                  rows="4" 
+                  placeholder="Jelaskan secara mendalam mengenai latar belakang diadakannya event ini, materi yang akan dipelajari, dan hasil akhir kegiatan..."
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- 3. Card Silabus & Kurikulum Dinamis (Syllabus Builder) -->
+            <div class="form-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <h3 class="form-card-title" style="margin-bottom: 0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  </svg>
+                  3. Pengelolaan Silabus & Modul Sesi
+                </h3>
+              </div>
+              <p class="form-card-subtitle">
+                Tambahkan pokok-pokok bahasan materi pembelajaran per sesi. Silabus ini akan berelasi langsung dengan tabel agenda dan modul speaker.
+              </p>
+
+              <!-- Dynamic Items Container -->
+              <div class="syllabus-container" id="syllabusContainer">
+                <!-- Baris silabus dinamis disisipkan via js/app.js -->
+              </div>
+
+              <!-- Button Tambah Modul -->
+              <button type="button" class="syllabus-btn-add" id="btnAddSyllabus">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Tambah Modul Silabus Baru</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Kolom Kanan: Ringkasan & Tombol Aksi (Sticky Sidebar) -->
+          <div class="form-side-col">
+            <div class="summary-box">
+              <h4 class="summary-title">Ringkasan Konfigurasi Event</h4>
+              
+              <ul class="summary-list">
+                <li>
+                  <span>Kategori Bidang</span>
+                  <span id="sumCategory" style="color: var(--tech);">Teknologi</span>
+                </li>
+                <li>
+                  <span>Jumlah Modul Sesi</span>
+                  <span id="sumTotalModules">0 Modul</span>
+                </li>
+                <li>
+                  <span>Total Estimasi Waktu</span>
+                  <span id="sumTotalDuration">0 Menit</span>
+                </li>
+                <li>
+                  <span>Format Pelaksanaan</span>
+                  <span>Seminar / Workshop</span>
+                </li>
+              </ul>
+
+              <div style="background-color: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 20px;">
+                <div style="font-size: 0.75rem; color: var(--slate-500); margin-bottom: 4px; font-weight: 600;">PREVIEW JUDUL:</div>
+                <div id="sumTitle" style="font-size: 0.85rem; font-weight: 600; color: var(--slate-800); word-break: break-word;">
+                  (Belum diisi)
+                </div>
+              </div>
+
+              <div class="summary-actions">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                  </svg>
+                  <span>Simpan Master Event</span>
+                </button>
+
+                <a href="index.html" class="btn btn-secondary" style="width: 100%;">
+                  <span>Batalkan & Kembali</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<!-- ========================================================================
+     MODAL SPESIFIKASI ARSITEKTUR MODUL KELOMPOK (B, C, D)
+     ======================================================================== -->
+<div class="modal-overlay" id="peerModuleModal">
+  <div class="modal-container" style="max-width: 680px;">
+    <div class="modal-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="module-header-badge" id="peerModuleBadge">Modul X</span>
+        <h3 class="modal-title" id="peerModuleTitle">Spesifikasi Modul Otonom</h3>
+      </div>
+      <button class="modal-close" onclick="closeModal('peerModuleModal')" title="Tutup">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="module-header-box">
+        <div class="module-header-left">
+          <h3 id="peerModuleAssignee">Penanggung Jawab: Individu X</h3>
+          <span>Arsitektur Sistem Otonom & Interkoneksi Modul Master Event</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <div class="spec-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          Deskripsi & Tanggung Jawab Modul
+        </div>
+        <p id="peerModuleDesc" style="font-size: 0.875rem; color: var(--slate-600); line-height: 1.6;"></p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <div class="spec-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 7V4h16v3"></path>
+            <path d="M9 20h6"></path>
+            <path d="M12 4v16"></path>
+          </svg>
+          Relasi Database ke Modul Master Event (Individu A)
+        </div>
+        <div class="relation-pill-box" id="peerModuleRelations">
+          <!-- Di-render oleh js/app.js -->
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <div class="spec-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          Endpoint RESTful API yang Tersedia
+        </div>
+        <div class="endpoint-list" id="peerModuleEndpoints">
+          <!-- Di-render oleh js/app.js -->
+        </div>
+      </div>
+
+      <div>
+        <div class="spec-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+          </svg>
+          Contoh Skema Migrasi Database Relasional Laravel
+        </div>
+        <pre class="schema-code-box" id="peerModuleMigration"></pre>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" onclick="closeModal('peerModuleModal')">Tutup Penjelasan</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/app.js"></script>
+</body>
+</html>
